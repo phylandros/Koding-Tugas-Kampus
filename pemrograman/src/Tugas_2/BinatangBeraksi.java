@@ -1,6 +1,6 @@
 package Tugas_2;
 
-public class main {
+public class BinatangBeraksi {
     public static void main(String[] args) {
         System.out.println("TUGAS 2");
         Anjing anjing = new Anjing();
