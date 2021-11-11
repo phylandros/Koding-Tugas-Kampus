@@ -1,4 +1,4 @@
-package test;
+package Tugas_1;
 
 public class Matematika{
     int a;

@@ -1,4 +1,4 @@
-package Tugas;
+package Tugas_2;
 
 public class Binatang {
     private String nama = "";
