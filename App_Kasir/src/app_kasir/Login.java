@@ -5,19 +5,33 @@
 package app_kasir;
 
 
+
+import javax.swing.JOptionPane;
+import java.awt.event.WindowEvent;
+import app_kasir.Dashboard;
+import java.awt.Dimension;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import javax.swing.JFrame;
+
 /**
  *
  * @author ariya
  */
-public class Form_1 extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Form_1
      */
-    public Form_1() {
+    public Login() {
+        JFrame jframe = new JFrame("Login");
         initComponents();
+        
  
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,11 +47,14 @@ public class Form_1 extends javax.swing.JFrame {
         Username = new javax.swing.JLabel();
         InputUsername = new javax.swing.JTextField();
         Password = new javax.swing.JLabel();
+        Loginbtn = new javax.swing.JButton();
         InputPassword = new javax.swing.JPasswordField();
         Image2 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login Kasir Rumah Kucing");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -59,11 +76,6 @@ public class Form_1 extends javax.swing.JFrame {
                 InputUsernameFocusGained(evt);
             }
         });
-        InputUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputUsernameActionPerformed(evt);
-            }
-        });
         jPanel1.add(InputUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 340, 240, 30));
 
         Password.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -71,6 +83,14 @@ public class Form_1 extends javax.swing.JFrame {
         Password.setText("Password");
         Password.setPreferredSize(new java.awt.Dimension(50, 15));
         jPanel1.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 390, 90, -1));
+
+        Loginbtn.setText("Login");
+        Loginbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginbtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Loginbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, -1, -1));
 
         InputPassword.setText("jPasswordField1");
         InputPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -91,9 +111,7 @@ public class Form_1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,10 +123,6 @@ public class Form_1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InputUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputUsernameActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_InputUsernameActionPerformed
-
     private void InputUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InputUsernameFocusGained
         // TODO add your handling code here:
         InputUsername.setText("");
@@ -118,6 +132,50 @@ public class Form_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         InputPassword.setText("");
     }//GEN-LAST:event_InputPasswordFocusGained
+
+    private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
+        // TODO add your handling code here:   
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rumahkucing", "root", "");
+            String sql = "SELECT * FROM login WHERE username=? and password=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, InputUsername.getText());
+            pst.setString(2, InputPassword.getText());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()){
+                JOptionPane.showMessageDialog(null, "Login Berhasil");
+                setVisible(false);
+                
+                Dashboard Info = new Dashboard();
+                Info.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Username & Password Salah");
+                InputUsername.setText("");
+                InputPassword.setText("");
+            }
+            con.close();
+            
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+//        
+//        String username = InputUsername.getText();
+//        String password = InputPassword.getText();
+//        
+//        if (password.contains("") && (username.contains(""))){
+//            InputUsername.setText(null);
+//            InputPassword.setText(null);
+//            systemExit();
+//            setVisible(false);
+//            
+//            Dashboard Info = new Dashboard();
+//            Info.setVisible(true);
+//                    
+//        }
+    }//GEN-LAST:event_LoginbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,29 +194,42 @@ public class Form_1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_1().setVisible(true);
+//                displayFrame();
+                new Login().setVisible(true);
+                
             }
         });
     }
+    
+//    static void displayFrame(){
+//       JFrame jframe = new JFrame("Login");
+//       jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//       jframe.setPreferredSize(new Dimension(400, 300));
+//       jframe.pack();
+//       jframe.setLocationRelativeTo(null);
+//       jframe.setVisible(true);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Image2;
     private javax.swing.JPasswordField InputPassword;
     private javax.swing.JTextField InputUsername;
+    private javax.swing.JButton Loginbtn;
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Username;
