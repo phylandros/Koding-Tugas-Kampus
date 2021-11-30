@@ -41,7 +41,7 @@ public class Form_1 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariya\\Downloads\\2.png")); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Koding-Tugas-Kampus\\App_Kasir\\src\\img\\2.png")); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 52, -1, -1));
 
         Username.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -81,10 +81,10 @@ public class Form_1 extends javax.swing.JFrame {
         });
         jPanel1.add(InputPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 418, 240, 30));
 
-        Image2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariya\\Downloads\\menu.png")); // NOI18N
+        Image2.setIcon(new javax.swing.ImageIcon("D:\\Koding-Tugas-Kampus\\App_Kasir\\src\\img\\menu.png")); // NOI18N
         jPanel1.add(Image2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Background.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariya\\Downloads\\1.png")); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon("D:\\Koding-Tugas-Kampus\\App_Kasir\\src\\img\\1.png")); // NOI18N
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

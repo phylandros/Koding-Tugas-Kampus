@@ -48,7 +48,7 @@
         <Component class="javax.swing.JLabel" name="Logo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ariya\Downloads\2.png"/>
+              <Image iconType="2" name="D:\Koding-Tugas-Kampus\App_Kasir\src\img\2.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -139,7 +139,7 @@
         <Component class="javax.swing.JLabel" name="Image2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ariya\Downloads\menu.png"/>
+              <Image iconType="2" name="D:\Koding-Tugas-Kampus\App_Kasir\src\img\menu.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -151,7 +151,7 @@
         <Component class="javax.swing.JLabel" name="Background">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ariya\Downloads\1.png"/>
+              <Image iconType="2" name="D:\Koding-Tugas-Kampus\App_Kasir\src\img\1.png"/>
             </Property>
           </Properties>
           <Constraints>
