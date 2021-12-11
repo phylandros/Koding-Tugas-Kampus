@@ -26,10 +26,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Form_1
      */
     public Login() {
-        JFrame jframe = new JFrame("Login");
-        initComponents();
-        
- 
+        initComponents();     
     }
     
 
@@ -55,6 +52,10 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Kasir Rumah Kucing");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(300, 80));
+        setMaximumSize(new java.awt.Dimension(1200, 824));
+        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -160,21 +161,6 @@ public class Login extends javax.swing.JFrame {
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-
-//        
-//        String username = InputUsername.getText();
-//        String password = InputPassword.getText();
-//        
-//        if (password.contains("") && (username.contains(""))){
-//            InputUsername.setText(null);
-//            InputPassword.setText(null);
-//            systemExit();
-//            setVisible(false);
-//            
-//            Dashboard Info = new Dashboard();
-//            Info.setVisible(true);
-//                    
-//        }
     }//GEN-LAST:event_LoginbtnActionPerformed
 
     /**
